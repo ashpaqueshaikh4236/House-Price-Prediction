@@ -38,19 +38,26 @@ rera = st.selectbox(' Type of rera ',rera)
 bhk = st.text_input('The Number of bhk')
 bh_rk = st.selectbox(' Select BHK OR RK',bhk_or_rk)
 square = st.text_input('Enter the square foot')
-Move = st.selectbox(' Select Ready to Move ',ready_to_move)
+move = st.selectbox(' Select Ready to Move ',ready_to_move)
 resale = st.selectbox(' Select the Resale ',resale)
 location = st.selectbox(' Select House location',address)
 longitude = st.text_input('Enter the Longitude')
 latitude = st.text_input('Enter the Latitude')
 
-try:
-    if st.button('predict'):
-        input_data = (dealer,working,rera,bhk,bh_rk,square,Move,resale,location,longitude,latitude)
-        rehape_data = np.asarray(input_data).reshape(1,-1)
-        result = model.predict(rehape_data)[0]
-        result = round(result, 2)
-        st.success(' House Price is ' + str(result) + ' Lakh')
-except:
-    st.warning('Please Fill all values')
+
+if st.button('predict'):
+    input_data = (dealer,working,rera,bhk,bh_rk,square,move,resale,location,longitude,latitude)
+    rehape_data = np.asarray(input_data).reshape(1,-1)
+    result = model.predict(rehape_data)[0]
+    result = round(result, 2)
+    st.success(' House Price is ' + str(result) + ' Lakh')
+# try:
+#     if st.button('predict'):
+#         input_data = (dealer,working,rera,bhk,bh_rk,square,move,resale,location,longitude,latitude)
+#         rehape_data = np.asarray(input_data).reshape(1,-1)
+#         result = model.predict(rehape_data)[0]
+#         result = round(result, 2)
+#         st.success(' House Price is ' + str(result) + ' Lakh')
+# except:
+#     st.warning('Please Fill all values')
     
