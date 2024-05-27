@@ -44,19 +44,13 @@ longitude = st.text_input('Enter the Longitude')
 latitude = st.text_input('Enter the Latitude')
 
 
-if st.button('predict'):
-    input_data = (dealer,working,rera,bhk,bh_rk,square,move,resale,location,longitude,latitude)
-    rehape_data = np.asarray(input_data).reshape(1,-1)
-    result = model.predict(rehape_data)
-    result = round(result, 2)
-    st.success(' House Price is ' + str(result) + ' Lakh')
-# try:
-#     if st.button('predict'):
-#         input_data = (dealer,working,rera,bhk,bh_rk,square,move,resale,location,longitude,latitude)
-#         rehape_data = np.asarray(input_data).reshape(1,-1)
-#         result = model.predict(rehape_data)[0]
-#         result = round(result, 2)
-#         st.success(' House Price is ' + str(result) + ' Lakh')
-# except:
-#     st.warning('Please Fill all values')
+try:
+    if st.button('predict'):
+        input_data = (dealer,working,rera,bhk,bh_rk,square,move,resale,location,longitude,latitude)
+        rehape_data = np.asarray(input_data).reshape(1,-1)
+        result = model.predict(rehape_data)[0]
+        result = round(result, 2)
+        st.success(' House Price is ' + str(result) + ' Lakh')
+except:
+    st.warning('Please Fill all values')
     
