@@ -4,7 +4,6 @@ import pickle
 import numpy as np
 
 
-
 df = pickle.load(open('clean_data.pkl', 'rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 
