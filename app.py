@@ -48,9 +48,14 @@ try:
     if st.button('predict'):
         input_data = (dealer,working,rera,bhk,bh_rk,square,move,resale,location,longitude,latitude)
         rehape_data = np.asarray(input_data).reshape(1,-1)
-        result = model.predict(rehape_data)[0]
-        result = round(result, 2)
-        st.success(' House Price is ' + str(result) + ' Lakh')
-except:
-    st.warning('Please Fill all values')
+        
+        if 'select' in reshaped_data or '' in reshaped_data:
+            st.warning('Please fill all values')
+        else:
+            result = model.predict(rehape_data)[0]
+            result = round(result, 2)
+            st.success(' House Price is ' + str(result) + ' Lakh')
+            
+except Exception as e:
+    st.warning(f'An error occurred: {e}')
     
